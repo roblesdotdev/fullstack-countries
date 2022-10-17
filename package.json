@@ -1,0 +1,28 @@
+{
+  "name": "fullstack-countries",
+  "version": "1.0.0",
+  "description": "Countries PI FullStack",
+  "main": "index.js",
+  "engines": {
+    "node": ">=16",
+    "npm": "please-use-yarn",
+    "yarn": ">=1.22"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "validate": "cd server && yarn validate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roblesdotdev/fullstack-countries.git"
+  },
+  "author": "Aldo Robles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roblesdotdev/fullstack-countries/issues"
+  },
+  "homepage": "https://github.com/roblesdotdev/fullstack-countries#readme",
+  "devDependencies": {
+    "husky": "^8.0.1"
+  }
+}
