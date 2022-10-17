@@ -6,6 +6,7 @@ const successBuilder = require('./middlewares/success-builder')
 const cors = require('cors')
 const { getApiRoutes } = require('./routes')
 require('express-async-errors')
+const { conn } = require('./db')
 
 function startServer({ port = process.env.PORT } = {}) {
   const app = express()
@@ -34,8 +35,14 @@ function startServer({ port = process.env.PORT } = {}) {
   app.use(errorMiddleware)
 
   return new Promise((resolve) => {
-    const server = app.listen(port, () => {
+    const server = app.listen(port, async () => {
       logger.info(`Server listening at ${server.address().port}`)
+      try {
+        conn.sync({ force: true })
+        logger.info(`Database is up`)
+      } catch (err) {
+        logger.error(err.message)
+      }
     })
 
     resolve(server)
