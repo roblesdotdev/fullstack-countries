@@ -39,7 +39,7 @@ function startServer({ port = process.env.PORT } = {}) {
     const server = app.listen(port, async () => {
       logger.info(`Server listening at ${server.address().port}`)
       try {
-        conn.sync({ force: true })
+        conn.sync({ force: false })
         logger.info(`Database is up`)
         await seed()
       } catch (err) {
