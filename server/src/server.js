@@ -4,6 +4,7 @@ const errorMiddleware = require('./middlewares/error-middleware')
 const errorBuilder = require('./middlewares/error-builder')
 const successBuilder = require('./middlewares/success-builder')
 const cors = require('cors')
+const { getApiRoutes } = require('./routes')
 require('express-async-errors')
 
 function startServer({ port = process.env.PORT } = {}) {
@@ -28,8 +29,7 @@ function startServer({ port = process.env.PORT } = {}) {
   app.use(errorBuilder)
   app.use(successBuilder)
 
-  app.get('/', (req, res) => res.jsonSuccess({ message: 'Working' }))
-  app.get('/err', (req, res) => res.jsonError(404, 'Not found'))
+  app.use(getApiRoutes())
 
   app.use(errorMiddleware)
 
