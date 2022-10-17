@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "nodemon -q src",
     "lint": "eslint .",
-    "format": "prettier --write --loglevel silent ."
+    "format": "prettier --write --loglevel silent .",
+    "validate": "yarn lint && yarn format"
   },
   "keywords": [],
   "author": "",
