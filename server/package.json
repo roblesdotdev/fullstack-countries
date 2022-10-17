@@ -9,7 +9,8 @@
     "yarn": ">=1.22"
   },
   "scripts": {
-    "dev": "nodemon -q src"
+    "dev": "nodemon -q src",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "loglevel": "^1.8.0"
   },
   "devDependencies": {
+    "eslint": "^8.25.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   }
