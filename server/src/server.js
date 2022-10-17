@@ -1,21 +1,21 @@
-const express = require("express");
-const logger = require("loglevel");
-require("express-async-errors");
+const express = require('express')
+const logger = require('loglevel')
+require('express-async-errors')
 
 function startServer({ port = process.env.PORT } = {}) {
-  const app = express();
+  const app = express()
 
-  app.get("/", (req, res) => res.json({ message: "Working" }));
+  app.get('/', (req, res) => res.json({ message: 'Working' }))
 
   return new Promise((resolve) => {
     const server = app.listen(port, () => {
-      logger.info(`Server listening at ${server.address().port}`);
-    });
+      logger.info(`Server listening at ${server.address().port}`)
+    })
 
-    resolve(server);
-  });
+    resolve(server)
+  })
 }
 
 module.exports = {
   startServer,
-};
+}

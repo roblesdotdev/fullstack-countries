@@ -1,6 +1,6 @@
-const logger = require("loglevel");
-const { startServer } = require("./server");
+const logger = require('loglevel')
+const { startServer } = require('./server')
 
-logger.setLevel("INFO");
+logger.setLevel('INFO')
 
-startServer({ port: 3001 });
+startServer({ port: 3001 })
