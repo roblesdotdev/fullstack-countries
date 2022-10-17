@@ -1,12 +1,18 @@
 const express = require('express')
 const logger = require('loglevel')
 const errorMiddleware = require('./middlewares/error-middleware')
+const errorBuilder = require('./middlewares/error-builder')
+const successBuilder = require('./middlewares/success-builder')
 require('express-async-errors')
 
 function startServer({ port = process.env.PORT } = {}) {
   const app = express()
 
-  app.get('/', (req, res) => res.json({ message: 'Working' }))
+  app.use(errorBuilder)
+  app.use(successBuilder)
+
+  app.get('/', (req, res) => res.jsonSuccess({ message: 'Working' }))
+  app.get('/err', (req, res) => res.jsonError(404, 'Not found'))
 
   app.use(errorMiddleware)
 
