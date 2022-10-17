@@ -7,6 +7,7 @@ const cors = require('cors')
 const { getApiRoutes } = require('./routes')
 require('express-async-errors')
 const { conn } = require('./db')
+const { seed } = require('./db/seed')
 
 function startServer({ port = process.env.PORT } = {}) {
   const app = express()
@@ -40,6 +41,7 @@ function startServer({ port = process.env.PORT } = {}) {
       try {
         conn.sync({ force: true })
         logger.info(`Database is up`)
+        await seed()
       } catch (err) {
         logger.error(err.message)
       }
